@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <!-- Icon Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <button class="toggle-btn" id="toggle-btn"><i class="fas fa-bars"></i></button>
+    
+    <div class="profile">
+      <img src="images/sreya.jpg" alt="Profile Photo">
+      <h2>Sreya Chakraborty</h2>
+      <p>Web Developer</p>
+      <div class="basic-info">
+        <p><i class="fas fa-envelope"></i> sreyachakraborty186@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Kolkata, India</p>
+      </div>
+      <!-- Social Links 
+      <div class="social-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>-->
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active"><i class="fas fa-home"></i><span> Home</span></a></li>
+        <li><a href="about.html"><i class="fas fa-user"></i><span> About</span></a></li>
+        <li><a href="projects.html"><i class="fas fa-code"></i><span> Projects</span></a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i><span> Contact</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Hello, I'm <span class="highlight">Sreya Chakraborty</span></h1>
+      <p class="tagline">Turning ideas into interactive and user-friendly web experiences.</p>
+      <p>I am a passionate Web Developer skilled in 
+        <b>HTML, CSS, JavaScript, React, WordPress, PHP, Laravel, SQL</b>.  
+        I create modern, responsive and creative websites.
+      </p>
+
+      <!---<div class="stats">
+        <div><h3>10+</h3><p>Projects</p></div>
+        <div><h3>6+</h3><p>Technologies</p></div>
+        <div><h3>6+</h3><p>Months Experience</p></div>
+      </div>
+      <br>--->
+      <div class="hero-btns">
+        <a href="projects.html" class="btn">View My Work</a>
+        <a href="Resume.pdf" class="btn secondary" download>Download Resume</a>
+      </div>
+
+      <!-- Quick Stats -->
+    </section>
+
+    <!-- About Preview -->
+    <section class="preview">
+      <h2>About Me</h2>
+      <p>I am a dedicated web developer with experience in building responsive websites.  
+      Skilled in <b>WordPress & Web Development</b>.</p>
+      <a href="about.html" class="btn">Read More</a>
+    </section>
+
+    <!-- Skills Preview -->
+    <section class="preview">
+      <h2>My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><i class="fab fa-html5"></i> HTML & CSS</div><br>
+        <div class="skill-card"><i class="fab fa-js"></i> JavaScript</div><br>
+        <div class="skill-card"><i class="fab fa-wordpress"></i> WordPress</div><br>
+        <div class="skill-card"><i class="fab fa-react"></i> React (Beginner)</div><br>
+        <div class="skill-card"><i class="fas fa-code"></i> PHP</div><br>
+        <div class="skill-card"><i class="fas fa-database"></i> SQL</div><br>
+        <div class="skill-card"><i class="fab fa-laravel"></i> Laravel</div><br>
+        <div class="skill-card"><i class="fab fa-bootstrap"></i>Bootstrap</div><br>
+      </div>
+    </section>
+
+    <!-- Projects Preview -->
+    <section class="preview">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="images/portfolio.PNG" alt="Project 1">
+          <h3>Portfolio Website</h3>
+        </div>
+        <div class="project-card">
+          <img src="images/gym.PNG" alt="Project 2">
+          <h3>Gym Landing Page (WordPress)</h3>
+        </div>
+        <div class="project-card">
+          <img src="images/counter.PNG" alt="Project 3">
+          <h3>Counter App</h3>
+        </div>
+      </div>
+      <a href="projects.html" class="btn">View More</a>
+    </section>
+
+    <!-- Contact Preview -->
+    <section class="preview">
+      <h2>Get in Touch</h2>
+      <p>Looking to collaborate? Let's talk!</p>
+      <a href="contact.html" class="btn">Contact Me</a>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

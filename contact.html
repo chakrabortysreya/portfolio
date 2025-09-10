@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <button class="toggle-btn" id="toggle-btn"><i class="fas fa-bars"></i></button>
+    
+    <div class="profile">
+      <img src="images/sreya.jpg" alt="Profile Photo">
+      <h2>Sreya Chakraborty</h2>
+      <p>Web Developer</p>
+      <div class="basic-info">
+        <p><i class="fas fa-envelope"></i> sreyachakraborty186@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Kolkata, India</p>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i><span> Home</span></a></li>
+        <li><a href="about.html"><i class="fas fa-user"></i><span> About</span></a></li>
+        <li><a href="projects.html"><i class="fas fa-code"></i><span> Projects</span></a></li>
+        <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i><span> Contact</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content" id="content">
+  <section class="preview contact-preview">
+    <h1>Contact Me</h1>
+    <p>If you’d like to work together or just say hi, feel free to reach out.</p>
+    
+    <form class="contact-form">
+      <div class="form-group">
+        <input type="text" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+</main>
+
+</body>
+</html>
