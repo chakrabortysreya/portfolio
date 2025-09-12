@@ -11,8 +11,9 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease, left 0.3s ease;
   position: relative;
+  height: 100vh;
 }
 
 .sidebar img {
@@ -42,17 +43,21 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
 
 /* ===== Toggle Button ===== */
 .toggle-btn {
-  position: absolute;
+  position: fixed;
   top: 15px;
   left: 15px;
-  background: transparent;
+  background: #2c2c3e;
   border: none;
   cursor: pointer;
   font-size: 22px;
   color: #f1c40f;
-  transition: color 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: color 0.3s ease, background 0.3s ease;
+  z-index: 1000;
+  display: block; /* 🔥 always visible */
 }
-.toggle-btn:hover { color: #f39c12; }
+.toggle-btn:hover { color: #f39c12; background: #1a1a28; }
 
 /* ===== Collapsed Sidebar ===== */
 .sidebar.collapsed {
@@ -73,7 +78,15 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
 }
 
 /* ===== Main Content ===== */
-.content { flex: 1; padding: 40px; transition: margin-left 0.3s ease; }
+.content {
+  flex: 1;
+  padding: 40px;
+  transition: margin-left 0.3s ease;
+  margin-left: 260px; /* default sidebar width */
+}
+.sidebar.collapsed ~ .content {
+  margin-left: 80px; /* collapse hole shift hobe */
+}
 .content h1, .content h2 { color: #f1c40f; margin-bottom: 15px; }
 
 /* ===== Hero ===== */
@@ -156,12 +169,10 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   text-align: left;
 }
-
 .contact-form .form-group {
   display: flex;
   flex-direction: column;
 }
-
 .contact-form input,
 .contact-form textarea {
   padding: 12px;
@@ -171,14 +182,12 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
   background: #2a2d3e;
   color: #fff;
 }
-
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: #f1c40f;
   background: #33364a;
 }
-
 .contact-form .btn {
   background: #f1c40f;
   color: #000;
@@ -189,18 +198,11 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
   cursor: pointer;
   transition: 0.3s;
 }
-
-.contact-form .btn:hover {
-  background: #d4ac0d;
-}
+.contact-form .btn:hover { background: #d4ac0d; }
 
 /* ===== Responsive ===== */
-
-/* Tablet and below */
 @media (max-width: 991px) {
-  body {
-    flex-direction: column;
-  }
+  body { flex-direction: column; }
 
   /* Sidebar hidden by default (slide menu style) */
   .sidebar {
@@ -209,53 +211,21 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
     left: -260px;
     width: 260px;
     height: 100%;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 30px 20px;
     transition: left 0.3s ease;
     z-index: 999;
   }
-
-  /* Sidebar open */
   .sidebar.active {
     left: 0;
   }
 
-  /* Toggle button (hamburger) */
-  .toggle-btn {
-    display: block;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    background: #2c2c3e;
-    color: #f1c40f;
-    border: none;
-    padding: 10px 12px;
-    border-radius: 6px;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 1000;
-  }
-
-  /* Content full width */
-  .content {
-    margin-left: 0;
-    padding: 20px;
-  }
+  /* Content full width on mobile */
+  .content { margin-left: 0; padding: 20px; }
 
   /* Hero center aligned */
-  .hero {
-    text-align: center;
-    padding: 40px 15px;
-  }
-  .hero h1 {
-    font-size: 26px;
-  }
-  .hero p {
-    font-size: 15px;
-  }
+  .hero { text-align: center; padding: 40px 15px; }
+  .hero h1 { font-size: 26px; }
+  .hero p { font-size: 15px; }
 
-  /* Buttons stack vertically */
   .hero .btn {
     display: block;
     width: fit-content;
@@ -270,33 +240,17 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
     margin-top: 20px;
   }
 }
-
-/* Small mobile */
 @media (max-width: 576px) {
-  .hero h1 {
-    font-size: 22px;
-  }
-  .hero p {
-    font-size: 13px;
-  }
-  .btn {
-    padding: 8px 14px;
-    font-size: 13px;
-  }
+  .hero h1 { font-size: 22px; }
+  .hero p { font-size: 13px; }
+  .btn { padding: 8px 14px; font-size: 13px; }
 
-  /* Stats stacked vertically */
   .stats {
     flex-direction: column;
     gap: 10px;
     text-align: center;
   }
 
-  /* Skills and Projects grid for mobile */
-  .skills {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
+  .skills { flex-wrap: wrap; justify-content: center; }
+  .projects-grid { grid-template-columns: 1fr; }
 }
