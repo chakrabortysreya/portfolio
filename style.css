@@ -1,6 +1,6 @@
 /* ===== Global Reset ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
-body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
+body { background: #1e1e2f; color: #ddd; min-height: 100vh; }
 
 /* ===== Sidebar ===== */
 .sidebar {
@@ -12,8 +12,11 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
   align-items: center;
   text-align: center;
   transition: width 0.3s ease, left 0.3s ease;
-  position: relative;
-  height: 100vh;
+  position: fixed;       /* 🔥 fixed sidebar */
+  top: 0;
+  left: 0;
+  height: 100vh;         /* full height */
+  z-index: 999;
 }
 
 .sidebar img {
@@ -55,7 +58,6 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
   border-radius: 6px;
   transition: color 0.3s ease, background 0.3s ease;
   z-index: 1000;
-  display: block; /* 🔥 always visible */
 }
 .toggle-btn:hover { color: #f39c12; background: #1a1a28; }
 
@@ -82,10 +84,10 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
   flex: 1;
   padding: 40px;
   transition: margin-left 0.3s ease;
-  margin-left: 260px; /* default sidebar width */
+  margin-left: 260px;  /* 🔥 sidebar width er sathe match */
 }
 .sidebar.collapsed ~ .content {
-  margin-left: 80px; /* collapse hole shift hobe */
+  margin-left: 80px;
 }
 .content h1, .content h2 { color: #f1c40f; margin-bottom: 15px; }
 
@@ -108,7 +110,7 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
 }
 .btn:hover { background: #f39c12; color: #fff; }
 
-/* ===== Preview Sections (Default Left Align) ===== */
+/* ===== Preview Sections ===== */
 .preview {
   background: #2c2c3e;
   padding: 25px;
@@ -116,8 +118,6 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
   margin-bottom: 30px;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
   text-align: left;
-  align-items: flex-start;
-  justify-content: flex-start;
 }
 .preview p { margin-bottom: 15px; }
 
@@ -146,16 +146,13 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
 .project-card img { width: 100%; border-radius: 6px; }
 .project-card h3 { margin-top: 8px; font-size: 14px; color: #fff; }
 
-/* ===== Contact Section Center Align ===== */
+/* ===== Contact Section ===== */
 .preview.contact-preview {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
 }
-
-/* ===== Contact Form ===== */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -169,10 +166,7 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   text-align: left;
 }
-.contact-form .form-group {
-  display: flex;
-  flex-direction: column;
-}
+.contact-form .form-group { display: flex; flex-direction: column; }
 .contact-form input,
 .contact-form textarea {
   padding: 12px;
@@ -204,24 +198,18 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
 @media (max-width: 991px) {
   body { flex-direction: column; }
 
-  /* Sidebar hidden by default (slide menu style) */
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: -260px;
-    width: 260px;
-    height: 100%;
-    transition: left 0.3s ease;
-    z-index: 999;
+    left: -260px;    /* hidden by default */
   }
   .sidebar.active {
     left: 0;
   }
 
-  /* Content full width on mobile */
-  .content { margin-left: 0; padding: 20px; }
+  .content {
+    margin-left: 0;  /* full width content */
+    padding: 20px;
+  }
 
-  /* Hero center aligned */
   .hero { text-align: center; padding: 40px 15px; }
   .hero h1 { font-size: 26px; }
   .hero p { font-size: 15px; }
@@ -232,7 +220,6 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
     margin: 10px auto;
   }
 
-  /* Stats horizontally aligned */
   .stats {
     display: flex;
     justify-content: center;
@@ -240,17 +227,13 @@ body { background: #1e1e2f; color: #ddd; display: flex; min-height: 100vh; }
     margin-top: 20px;
   }
 }
+
 @media (max-width: 576px) {
   .hero h1 { font-size: 22px; }
   .hero p { font-size: 13px; }
   .btn { padding: 8px 14px; font-size: 13px; }
 
-  .stats {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
+  .stats { flex-direction: column; gap: 10px; text-align: center; }
   .skills { flex-wrap: wrap; justify-content: center; }
   .projects-grid { grid-template-columns: 1fr; }
 }
